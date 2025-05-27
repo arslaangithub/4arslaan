@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Table Row Add</title>
+  <script>
+    function addRow() {
+      const table = document.getElementById("tblPeople");
+      const firstName = document.getElementById("firstName").value;
+      const middleName = document.getElementById("middleName").value;
+      const lastName = document.getElementById("lastName").value;
+
+      if (!firstName && !middleName && !lastName) return;
+
+      const newRow = table.insertRow();
+      [firstName, middleName, lastName].forEach(value => {
+        const cell = newRow.insertCell();
+        cell.textContent = value;
+      });
+    }
+  </script>
+</head>
+<body>
+  <h3>Enter Name</h3>
+  <form onsubmit="event.preventDefault(); addRow();">
+    <label>First Name: <input type="text" id="firstName" /></label>
+    <label>Middle Name: <input type="text" id="middleName" /></label>
+    <label>Last Name: <input type="text" id="lastName" /></label>
+    <br><br>
+    <button type="submit">Add Name</button>
+  </form>
+  <hr>
+  <table id="tblPeople" border="1">
+    <tr>
+      <th>First Name</th>
+      <th>Middle Name</th>
+      <th>Last Name</th>
+    </tr>
+  </table>
+</body>
+</html>
