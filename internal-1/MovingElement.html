@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Move Image</title>
+  <style>
+    #image {
+      position: absolute;
+      left: 0px;
+      top: 100px;
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body onload="initImage()">
+
+  <img id="image" src="https://via.placeholder.com/100" alt="Moving Image">
+
+  <script>
+    var dom, finalx = 700;
+
+    function initImage() {
+      dom = document.getElementById('image').style;
+      var x = parseInt(dom.left) || 0;
+      var y = parseInt(dom.top) || 0;
+      moveImage(x, y);
+    }
+
+    function moveImage(x, y) {
+      if (x !== finalx) {
+        x++;
+        dom.left = x + "px";
+        dom.top = y + "px";
+        setTimeout(function () {
+          moveImage(x, y);
+        }, 1);
+      }
+    }
+  </script>
+
+</body>
+</html>
